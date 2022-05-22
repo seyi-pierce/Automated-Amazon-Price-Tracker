@@ -25,11 +25,13 @@ soup = bs(content, "lxml")
 price = float(soup.find(name="span", class_="a-offscreen").getText().split("$")[1])
 print(price)
 
-with SMTP("smtp.gmail.com") as connection:
-    connection.starttls()
-    connection.login(user=my_email, password=password)
-    connection.sendmail(
-        from_addr=my_email,
-        to_addrs=RECIPIENT'S EMAIL,
-        msg=f"Your product is below ${target_price} today. Please purchase now."
-    )
+#################### COMPARE PRICE AND SEND EMAIL ######################
+if price <= target price:
+    with SMTP("smtp.gmail.com") as connection:
+        connection.starttls()
+        connection.login(user=my_email, password=password)
+        connection.sendmail(
+            from_addr=my_email,
+            to_addrs=RECIPIENT'S EMAIL,
+            msg=f"Your product is below ${target_price} today. Please purchase now."
+        )
